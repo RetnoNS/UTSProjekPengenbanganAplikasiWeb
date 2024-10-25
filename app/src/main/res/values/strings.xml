@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">UTSproject</string>
+    <string name="hint_username">Username</string>
+    <string name="hint_password">Password</string>
+    <string name="login">Login\n</string>
+    <string name="register">Register Here</string>
+    <string name="food_list_title">Food and Beverages</string>
+    <string-array name="food_list">
+        <item>Batagor</item>
+        <item>Black Salad</item>
+        <item>Cappucino</item>
+        <item>Cheesecake</item>
+        <item>Cireng</item>
+        <item>Donut</item>
+        <item>Kopi Hitam</item>
+        <item>Mie Goreng</item>
+        <item>Nasi Goreng</item>
+        <item>Sparkling Tea</item>
+    </string-array>
+</resources>
