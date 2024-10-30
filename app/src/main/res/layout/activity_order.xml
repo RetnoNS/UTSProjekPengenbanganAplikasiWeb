@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -7,91 +7,155 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
+    android:background="#D2E0FB"
     tools:context=".OrderActivity">
 
-        <!-- Judul Halaman -->
-        <TextView
-            android:id="@+id/tvTitle"
+
+        <!-- Logo di Latar Belakang -->
+        <ImageView
+            android:id="@+id/logoBackground"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Order Food"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="16dp"/>
+            android:layout_gravity="center"
+            android:alpha="0.3"
+            android:scaleType="center"
+            android:src="@drawable/logo"
+            android:contentDescription="@null"/>
 
-        <!-- Input Nama Makanan -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Food Name"
-            android:textSize="18sp"
-            android:layout_marginBottom="8dp"/>
-
-        <Spinner
-            android:id="@+id/etFoodName"
+        <!-- Konten utama di atas logo -->
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:entries="@array/food_list"
-            android:hint="Enter food name - Get From List"
-            android:minHeight="48dp"
-            android:padding="12dp" />
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp">
 
-        <!-- Input Jumlah Porsi -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Number of Servings"
-            android:textSize="18sp"
-            android:layout_marginBottom="8dp"/>
-        <EditText
-            android:id="@+id/etServings"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Enter number of servings"
-            android:inputType="number"
-            android:padding="12dp"
-            android:layout_marginBottom="16dp"/>
+                <!-- Judul Halaman -->
+                <TextView
+                    android:id="@+id/tvTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="50dp"
+                    android:text="Order Food"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    tools:ignore="HardcodedText" />
 
-        <!-- Input Jumlah Porsi -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Ordering Name"
-            android:textSize="18sp"
-            android:layout_marginBottom="8dp"/>
-        <EditText
-            android:id="@+id/etName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Ordering name by"
-            android:padding="12dp"
-            android:layout_marginBottom="16dp"/>
+                <!-- Input Nama Makanan -->
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="25dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/food_name"
+                    android:textSize="18sp" />
 
 
-        <!-- Input Catatan Tambahan -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Additional Notes"
-            android:textSize="18sp"
-            android:layout_marginBottom="8dp"/>
-        <EditText
-            android:id="@+id/etNotes"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Enter any additional notes"
-            android:padding="12dp"
-            android:layout_marginBottom="16dp"/>
+                <TextView
+                    android:id="@+id/foodNameTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="25dp"
+                    android:layout_marginBottom="16dp"
+                    android:padding="12dp"
+                    android:textSize="18sp" />
 
-        <!-- Tombol Order -->
-        <Button
-            android:id="@+id/btnOrder"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Place Order"
-            android:textColor="@android:color/white"
-            android:padding="12dp"/>
+                <!-- Harga-->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="25dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="Price"
+                    android:textSize="18sp"
+                    tools:ignore="HardcodedText" />
 
-</LinearLayout>
+                <TextView
+                    android:id="@+id/foodPriceTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="25dp"
+                    android:layout_marginBottom="16dp"
+                    android:padding="12dp"
+                    android:textSize="18sp" />
+
+
+                <!-- Input Jumlah Porsi -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="25dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/number_of_servings"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/etServings"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="25dp"
+                    android:layout_marginBottom="16dp"
+                    android:hint="Enter number of servings"
+                    android:inputType="number"
+                    android:padding="12dp"
+                    tools:ignore="Autofill,HardcodedText" />
+
+                <!-- Input Jumlah Porsi -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="25dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/ordering_name"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/etName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="25dp"
+                    android:layout_marginBottom="16dp"
+                    android:hint="Ordering name by"
+                    android:inputType="textPersonName"
+                    android:padding="12dp"
+                    tools:ignore="Autofill,HardcodedText" />
+
+
+                <!-- Input Catatan Tambahan -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="25dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="Additional Notes"
+                    android:textSize="18sp"
+                    tools:ignore="HardcodedText" />
+
+                <EditText
+                    android:id="@+id/etNotes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="25dp"
+                    android:layout_marginBottom="16dp"
+                    android:hint="Enter any additional notes"
+                    android:inputType="text"
+                    android:padding="12dp"
+                    tools:ignore="Autofill,HardcodedText" />
+
+                <!-- Tombol Order -->
+                <Button
+                    android:id="@+id/btnOrder"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="25dp"
+                    android:layout_marginTop="100dp"
+                    android:layout_marginBottom="16dp"
+                    android:backgroundTint="#B5C0D0"
+                    android:padding="12dp"
+                    android:text="@string/place_order"
+                    android:textColor="@android:color/white"
+                    tools:ignore="TextContrastCheck" />
+        </LinearLayout>
+</FrameLayout>

@@ -1,5 +1,6 @@
 package lat.pam.utsproject
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -24,19 +25,26 @@ class ListFoodActivity : AppCompatActivity() {
 
         // Menyiapkan data makanan
         foodList = listOf(
-            Food("Batagor", "Batagor asli enak dari Bandung", R.drawable.batagor),
-            Food("Black Salad", "Salad segar yang dibuat secara langsung", R.drawable.black_salad),
-            Food("Cappucino", "Kopi cappucino asli yang dibuat dari Kopi Arabica", R.drawable.cappuchino),
-            Food("Cheesecake", "Lumer di Lidah, Bahagia di Hati!", R.drawable.cheesecake),
-            Food("Cireng", "Cireng Gurih, Nikmatnya Nggak Kalah Nendang!", R.drawable.cireng),
-            Food("Donut", "Donut Lembut, Manisnya Bikin Nagih!", R.drawable.donut),
-            Food("Kopi Hitam", "Kopi Hitam, Pahitnya Bikin Melek!", R.drawable.kopi_hitam),
-            Food("Mie Goreng", "Paduan Rasa yang Menggoda Selera!", R.drawable.mie_goreng),
-            Food("Nasi Goreng", "Nasi Goreng, Cita Rasa Autentik yang Menghangatkan Jiwa!", R.drawable.nasigoreng),
-            Food("Sparkling Tea", "Sparkling Tea, Kesegaran Berkilau dalam Setiap Tegukan!", R.drawable.sparkling_tea)
+            Food("Batagor", "Batagor asli enak dari Bandung","Rp.15.000", R.drawable.batagor),
+            Food("Black Salad", "Salad segar yang dibuat secara langsung","Rp.17.000", R.drawable.black_salad),
+            Food("Cappucino", "Kopi cappucino asli yang dibuat dari Kopi Arabica","Rp.10.000", R.drawable.cappuchino),
+            Food("Cheesecake", "Lumer di Lidah, Bahagia di Hati!", "Rp.21.000", R.drawable.cheesecake),
+            Food("Cireng", "Cireng Gurih, Nikmatnya Nggak Kalah Nendang!","Rp.15.000", R.drawable.cireng),
+            Food("Donut", "Donut Lembut, Manisnya Bikin Nagih!", "Rp.5.000", R.drawable.donut),
+            Food("Kopi Hitam", "Kopi Hitam, Pahitnya Bikin Melek!","Rp.7.000", R.drawable.kopi_hitam),
+            Food("Mie Goreng", "Paduan Rasa yang Menggoda Selera!","Rp.15.000", R.drawable.mie_goreng),
+            Food("Nasi Goreng", "Nasi Goreng, Cita Rasa Autentik yang Menghangatkan Jiwa!", "Rp.15.000", R.drawable.nasigoreng),
+            Food("Sparkling Tea", "Sparkling Tea, Kesegaran Berkilau dalam Setiap Tegukan!","Rp.13.000", R.drawable.sparkling_tea)
         )
 
-        adapter = FoodAdapter(foodList)
+        adapter = FoodAdapter(foodList) { food ->
+            val intent = Intent(this, OrderActivity::class.java)
+            intent.putExtra("foodName", food.name)
+            intent.putExtra("foodDescription", food.description)
+            intent.putExtra("foodPrice", food.price)
+            intent.putExtra("foodImage", food.imageResourceId)
+            startActivity(intent)
+        }
         recyclerView.adapter = adapter
 
 

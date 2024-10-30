@@ -8,7 +8,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 
-class FoodAdapter(private val foodList: List<Food>) : RecyclerView.Adapter<FoodAdapter.FoodViewHolder>() {
+class FoodAdapter(
+    private val foodList: List<Food>,
+    private val onItemClick: (Food) -> Unit
+) : RecyclerView.Adapter<FoodAdapter.FoodViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FoodViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_layout_food, parent, false)
@@ -19,7 +22,12 @@ class FoodAdapter(private val foodList: List<Food>) : RecyclerView.Adapter<FoodA
         val food = foodList[position]
         holder.foodName.text = food.name
         holder.foodDescription.text = food.description
+        holder.foodPrice.text = food.price
         holder.foodImage.setImageResource(food.imageResourceId)
+
+        holder.itemView.setOnClickListener {
+            onItemClick(food)
+        }
     }
 
     override fun getItemCount(): Int {
@@ -29,6 +37,7 @@ class FoodAdapter(private val foodList: List<Food>) : RecyclerView.Adapter<FoodA
     class FoodViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val foodImage: ImageView = itemView.findViewById(R.id.foodImage)
         val foodName: TextView = itemView.findViewById(R.id.foodName)
+        val foodPrice: TextView = itemView.findViewById(R.id.foodPrice)
         val foodDescription: TextView = itemView.findViewById(R.id.foodDescription)
     }
 }
